@@ -108,7 +108,9 @@ export const AuthForm = () => {
           variant="sky"
           size="fullWidth"
         >
-          <PiSignInFill className={cn("mr-2 h-4 w-4", isFormLauding && "animate-spin")} />
+          <PiSignInFill
+            className={cn("mr-2 h-4 w-4", isFormLauding && "animate-spin")}
+          />
           {variant === "LOGIN" ? "Увійти" : "Зареєструватись"}
         </Button>
       </form>
