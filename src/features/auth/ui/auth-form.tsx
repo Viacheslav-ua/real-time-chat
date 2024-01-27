@@ -37,13 +37,13 @@ export const AuthForm = () => {
               <FormItem>
                 <div className="flex items-center justify-between gap-4">
                   <FormLabel className="leading-6 text-gray-900">
-                    І'мя
+                    І&apos;мя
                   </FormLabel>
                   <FormControl>
                     <Input
                       className="leading-6 text-gray-900 focus-visible:ring-sky-600"
                       disabled={isFormLauding}
-                      placeholder="І'мя..."
+                      placeholder="І&apos;мя..."
                       {...field}
                     />
                   </FormControl>

@@ -2,6 +2,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
+import axios from "axios"
 import { AuthVariant } from "./use-toggle-auth-variant";
 
 const authFormSchema = z.object({
@@ -32,7 +33,7 @@ export const useAuthForm = (variant: AuthVariant) => {
   const onFormSubmit = (data: z.infer<typeof authFormSchema>) => {
     setIsFormLauding(true);
     if (variant === "REGISTER") {
-      // axios register
+      axios.post('/api/register', data)
     }
     if (variant === "LOGIN") {
       // next auth sign-in
