@@ -25,7 +25,7 @@ export const authOptions: AuthOptions = {
         password: { label: "password", type: "password" },
       },
       async authorize(credentials) {
-        if (credentials?.email || credentials?.password) {
+        if (!credentials?.email || !credentials?.password) {
           throw new Error("Недійсні облікові дані");
         }
         const user = await prisma.user.findUnique({
@@ -33,7 +33,7 @@ export const authOptions: AuthOptions = {
             email: credentials?.email,
           },
         });
-        if (!user || user?.hashedPassword) {
+        if (!user || !user?.hashedPassword) {
           throw new Error("Недійсні облікові дані");
         }
 

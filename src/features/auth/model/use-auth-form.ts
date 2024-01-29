@@ -3,7 +3,11 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import axios from "axios"
+import { signIn } from "next-auth/react"
+import { toast } from "react-hot-toast";
 import { AuthVariant } from "./use-toggle-auth-variant";
+
+
 
 const authFormSchema = z.object({
   name: z.string(),
@@ -34,11 +38,25 @@ export const useAuthForm = (variant: AuthVariant) => {
     setIsFormLauding(true);
     if (variant === "REGISTER") {
       axios.post('/api/register', data)
+      .catch(() => toast.error("something went wrong"))
+      .finally(() => setIsFormLauding(false))
     }
     if (variant === "LOGIN") {
-      // next auth sign-in
+      signIn('credentials', {
+        ...data,
+        redirect: false,
+      })
+      .then((callback) => {
+        if(callback?.error) {
+          toast.error("Недійсні облікові дані")
+          form.setValue("password", "")
+        }
+        if(callback?.ok && !callback.error) {
+          toast.success("Увійшли в систему")
+        }
+      })
+      .finally(() => setIsFormLauding(false))
     }
-    console.log(data);
   };
 
   return {

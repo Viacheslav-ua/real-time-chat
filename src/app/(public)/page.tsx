@@ -9,6 +9,7 @@ export default function Home() {
           <h1 className="text-sky-500">Flow</h1>
           <Image
             src={"/images/logo.png"}
+            priority={false}
             alt="Logo"
             height="50"
             width="50"

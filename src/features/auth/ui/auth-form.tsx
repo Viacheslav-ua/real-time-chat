@@ -16,15 +16,17 @@ import { AuthSocialButton } from "./auth-social-button";
 import { BsGithub, BsGoogle } from "react-icons/bs";
 import { useToggleAuthVariant } from "../model/use-toggle-auth-variant";
 import { useAuthForm } from "../model/use-auth-form";
+import { useSocialAction } from "../model/use-social-action";
 
 export const AuthForm = () => {
   const { variant, toggleVariant } = useToggleAuthVariant();
   const { form, isFormLauding, onFormSubmit } = useAuthForm(variant);
+  const { isSocialLauding, socialAction } = useSocialAction()
 
-  const socialAction = (action: string) => {
-    // setIsLauding(true);
-    // next auth social sign in
-  };
+  // const socialAction = (action: string) => {
+  //   setIsLauding(true);
+  //   ішпт
+  // };
 
   return (
     <Form {...form}>
@@ -42,7 +44,7 @@ export const AuthForm = () => {
                   <FormControl>
                     <Input
                       className="leading-6 text-gray-900 focus-visible:ring-sky-600"
-                      disabled={isFormLauding}
+                      disabled={isFormLauding || isSocialLauding}
                       placeholder="І&apos;мя..."
                       {...field}
                     />
@@ -66,7 +68,7 @@ export const AuthForm = () => {
                 <FormControl>
                   <Input
                     type="email"
-                    disabled={isFormLauding}
+                    disabled={isFormLauding || isSocialLauding}
                     className="leading-6 text-gray-900 focus-visible:ring-sky-600"
                     placeholder="Електронна пошта..."
                     {...field}
@@ -90,7 +92,7 @@ export const AuthForm = () => {
                 <FormControl>
                   <Input
                     type="password"
-                    disabled={isFormLauding}
+                    disabled={isFormLauding || isSocialLauding}
                     className="leading-6 text-gray-900 focus-visible:ring-sky-600"
                     placeholder="Пароль..."
                     {...field}
@@ -104,12 +106,12 @@ export const AuthForm = () => {
 
         <Button
           type="submit"
-          disabled={isFormLauding}
+          disabled={isFormLauding || isSocialLauding}
           variant="sky"
           size="fullWidth"
         >
           <PiSignInFill
-            className={cn("mr-2 h-4 w-4", isFormLauding && "animate-spin")}
+            className={cn("mr-2 h-4 w-4", isFormLauding || isSocialLauding && "animate-spin")}
           />
           {variant === "LOGIN" ? "Увійти" : "Зареєструватись"}
         </Button>
@@ -126,10 +128,10 @@ export const AuthForm = () => {
           </div>
         </div>
         <div className="mt-6 flex gap-2">
-          <AuthSocialButton onClick={() => socialAction("github")}>
+          <AuthSocialButton disabled={isFormLauding || isSocialLauding} onClick={() => socialAction("github")}>
             <BsGithub />
           </AuthSocialButton>
-          <AuthSocialButton onClick={() => socialAction("google")}>
+          <AuthSocialButton disabled={isFormLauding || isSocialLauding} onClick={() => socialAction("google")}>
             <BsGoogle />
           </AuthSocialButton>
         </div>
