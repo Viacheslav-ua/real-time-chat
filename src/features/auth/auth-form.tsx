@@ -12,21 +12,29 @@ import { Button } from "@/shared/ui/button";
 import { Input } from "@/shared/ui/input";
 import { PiSignInFill } from "react-icons/pi";
 import { cn } from "@/shared/utils/utils";
-import { AuthSocialButton } from "./auth-social-button";
+import { AuthSocialButton } from "./_ui/auth-social-button";
 import { BsGithub, BsGoogle } from "react-icons/bs";
-import { useToggleAuthVariant } from "../model/use-toggle-auth-variant";
-import { useAuthForm } from "../model/use-auth-form";
-import { useSocialAction } from "../model/use-social-action";
+import { useToggleAuthVariant } from "./_model/use-toggle-auth-variant";
+import { useAuthForm } from "./_model/use-auth-form";
+import { useSocialAction } from "./_model/use-social-action";
+import { useSession } from "next-auth/react";
+import { useEffect } from "react";
+import { useRouter } from "next/navigation";
+import { ROUTES } from "@/shared/constants/routes";
 
 export const AuthForm = () => {
   const { variant, toggleVariant } = useToggleAuthVariant();
   const { form, isFormLauding, onFormSubmit } = useAuthForm(variant);
   const { isSocialLauding, socialAction } = useSocialAction()
+  const session = useSession()
+  const router = useRouter()
 
-  // const socialAction = (action: string) => {
-  //   setIsLauding(true);
-  //   ішпт
-  // };
+  useEffect(() => {
+    if(session?.status === 'authenticated') {
+      router.push(ROUTES.USERS)
+      
+    }
+  }, [session?.status, router])
 
   return (
     <Form {...form}>

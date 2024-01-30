@@ -1,8 +1,11 @@
 import type { Metadata } from "next";
 import "../globals.css";
 import { Inter as FontSans } from "next/font/google";
-import { ToasterContext } from '@/features/context'
+import { ToasterContext } from '@/shared/context/toaster-context'
 import { cn } from "@/shared/utils/utils";
+import { AuthContext } from "@/shared/context/auth-context";
+import { ThemeProvider } from "@/features/theme/theme-provider";
+import { ToggleTheme } from "@/features/theme/toggle-theme";
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -20,26 +23,22 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
         className={cn(
           "min-h-screen bg-background font-sans antialiased",
           fontSans.variable,
         )}
       >
-        <ToasterContext />
-        {children}
-      </body>
-    </html>
+          <ThemeProvider>
+            <AuthContext>
+              <ToasterContext />
+              <ToggleTheme />
+              {children}
+            </AuthContext>
+          </ThemeProvider>
 
-    // <html lang="en">
-    //   <body>
-    //     {/* <AuthContext> */}
-    //       {/* <ToasterContext /> */}
-    //       {/* <ActiveStatus /> */}
-    //       {children}
-    //     {/* </AuthContext> */}
-    //   </body>
-    // </html>
+        </body>
+    </html>
   );
 }

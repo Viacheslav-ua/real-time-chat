@@ -1,4 +1,4 @@
-import { AuthForm } from "@/features/auth";
+import { AuthForm } from "@/features/auth/auth-form";
 import Image from "next/image";
 
 export default function Home() {
