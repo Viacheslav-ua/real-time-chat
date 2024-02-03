@@ -17,7 +17,7 @@ import { BsGithub, BsGoogle } from "react-icons/bs";
 import { useToggleAuthVariant } from "./_model/use-toggle-auth-variant";
 import { useAuthForm } from "./_model/use-auth-form";
 import { useSocialAction } from "./_model/use-social-action";
-import { useSession } from "next-auth/react";
+// import { useSession } from "next-auth/react";
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { ROUTES } from "@/shared/constants/routes";
@@ -26,15 +26,15 @@ export const AuthForm = () => {
   const { variant, toggleVariant } = useToggleAuthVariant();
   const { form, isFormLauding, onFormSubmit } = useAuthForm(variant);
   const { isSocialLauding, socialAction } = useSocialAction()
-  const session = useSession()
+  // const session = useSession()
   const router = useRouter()
 
-  useEffect(() => {
-    if(session?.status === 'authenticated') {
-      router.push(ROUTES.USERS)
+  // useEffect(() => {
+  //   if(session?.status === 'authenticated') {
+  //     router.push(ROUTES.USERS)
       
-    }
-  }, [session?.status, router])
+  //   }
+  // }, [session?.status, router])
 
   return (
     <Form {...form}>

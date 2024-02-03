@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
-import "../globals.css";
+import "./globals.css";
 import { Inter as FontSans } from "next/font/google";
 import { ToasterContext } from '@/shared/context/toaster-context'
 import { cn } from "@/shared/utils/utils";
-import { AuthContext } from "@/shared/context/auth-context";
 import { ThemeProvider } from "@/features/theme/theme-provider";
-import { ToggleTheme } from "@/features/theme/toggle-theme";
+import { queryClient } from "@/shared/api/query-client";
+import { QueryClientProvider } from "@tanstack/react-query";
+import { AppSessionProvider } from "@/entities/user/session";
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -23,22 +24,27 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="uk" suppressHydrationWarning>
       <body
         className={cn(
           "min-h-screen bg-background font-sans antialiased",
           fontSans.variable,
         )}
       >
-          <ThemeProvider>
-            <AuthContext>
-              <ToasterContext />
-              <ToggleTheme />
-              {children}
-            </AuthContext>
-          </ThemeProvider>
+        {/* <AppProvider> */}
 
-        </body>
+        <ThemeProvider>
+          <AppSessionProvider>
+            <QueryClientProvider client={queryClient}>
+              <ToasterContext />
+              {children}
+            </QueryClientProvider>
+          </AppSessionProvider>
+        </ThemeProvider>
+
+        {/* </AppProvider> */}
+
+      </body>
     </html>
   );
 }
