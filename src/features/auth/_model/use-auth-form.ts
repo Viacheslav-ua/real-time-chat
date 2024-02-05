@@ -2,15 +2,12 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import axios from "axios"
-import { signIn } from "next-auth/react"
+import axios from "axios";
+import { signIn } from "next-auth/react";
 import { toast } from "react-hot-toast";
 import { AuthVariant } from "./use-toggle-auth-variant";
 import { useRouter } from "next/navigation";
-import { ROUTES } from "@/shared/constants/routes";
 import { API_ROUTES } from "@/shared/constants/api-routes";
-
-
 
 const authFormSchema = z.object({
   name: z.string(),
@@ -27,7 +24,7 @@ const authFormSchema = z.object({
 
 export const useAuthForm = (variant: AuthVariant) => {
   const [isFormLauding, setIsFormLauding] = useState(false);
-  const router = useRouter()
+  const router = useRouter();
 
   const form = useForm<z.infer<typeof authFormSchema>>({
     resolver: zodResolver(authFormSchema),
@@ -41,27 +38,27 @@ export const useAuthForm = (variant: AuthVariant) => {
   const onFormSubmit = (data: z.infer<typeof authFormSchema>) => {
     setIsFormLauding(true);
     if (variant === "REGISTER") {
-      axios.post(API_ROUTES.REGISTER, data)
-      .then(() => signIn('credentials', data))
-      .catch(() => toast.error("something went wrong"))
-      .finally(() => setIsFormLauding(false))
+      axios
+        .post(API_ROUTES.REGISTER, data)
+        .then(() => signIn("credentials", data))
+        .catch(() => toast.error("something went wrong"))
+        .finally(() => setIsFormLauding(false));
     }
     if (variant === "LOGIN") {
-      signIn('credentials', {
+      signIn("credentials", {
         ...data,
         redirect: false,
       })
-      .then((callback) => {
-        if(callback?.error) {
-          toast.error("Недійсні облікові дані")
-          form.setValue("password", "")
-        }
-        if(callback?.ok && !callback.error) {
-          toast.success("Увійшли в систему")
-          router.push(ROUTES.USERS)
-        }
-      })
-      .finally(() => setIsFormLauding(false))
+        .then((callback) => {
+          if (callback?.error) {
+            toast.error("Недійсні облікові дані");
+            form.setValue("password", "");
+          }
+          if (callback?.ok && !callback.error) {
+            toast.success("Увійшли в систему");
+          }
+        })
+        .finally(() => setIsFormLauding(false));
     }
   };
 

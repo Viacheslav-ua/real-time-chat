@@ -59,13 +59,16 @@ export function useAppearanceDelay(
 export function ComposeChildren({ children }: { children: ReactNode }) {
   const array = Children.toArray(children);
   const last = array.pop();
-  console.log(array.reduceRight(
-    (child, element) =>
-      isValidElement(element)
-        ? createElement(element.type, element.props, child)
-        : child,
-    last,));
-  
+  console.log(
+    array.reduceRight(
+      (child, element) =>
+        isValidElement(element)
+          ? createElement(element.type, element.props, child)
+          : child,
+      last,
+    ),
+  );
+
   return (
     <>
       {array.reduceRight(

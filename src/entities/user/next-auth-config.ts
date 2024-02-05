@@ -7,6 +7,7 @@ import { PrismaAdapter } from "@next-auth/prisma-adapter";
 // import { useSession } from "next-auth/react";
 
 import prisma from "@/shared/libs/prismadb";
+import { ROUTES } from "@/shared/constants/routes";
 
 export const nextAuthConfig: AuthOptions = {
   adapter: PrismaAdapter(prisma),

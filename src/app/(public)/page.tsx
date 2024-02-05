@@ -3,22 +3,21 @@ import Image from "next/image";
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen flex-col justify-center py-12 sm:px-6 lg:px-8 bg-gray-100">
+    <div className="flex min-h-screen flex-col justify-center py-12 sm:px-6 lg:px-8 bg-slate-200 dark:bg-slate-900">
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
         <div className="flex items-center justify-center">
-          <h1 className="text-sky-500">Flow</h1>
+          <span className="text-sky-500">Flow</span>
           <Image
             src={"/images/logo.png"}
             priority={false}
             alt="Logo"
             height="50"
             width="50"
-            // className="mx-auto w-auto"
           />
-          <h1 className="text-sky-500">Chat</h1>
+          <span className="text-sky-500">Chat</span>
         </div>
 
-        <h2 className="mt-6 text-center text-3xl font-bold tracking-tight text-gray-900">
+        <h2 className="mt-6 text-center text-3xl font-bold tracking-tight text-slate-900 dark:text-slate-200">
           Увійдіть у свій аккаунт
         </h2>
       </div>

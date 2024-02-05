@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { Inter as FontSans } from "next/font/google";
-import { ToasterContext } from '@/shared/context/toaster-context'
+import { ToasterContext } from "@/shared/context/toaster-context";
 import { cn } from "@/shared/utils/utils";
 import { ThemeProvider } from "@/features/theme/theme-provider";
 import { queryClient } from "@/shared/api/query-client";
@@ -31,8 +31,6 @@ export default function RootLayout({
           fontSans.variable,
         )}
       >
-        {/* <AppProvider> */}
-
         <ThemeProvider>
           <AppSessionProvider>
             <QueryClientProvider client={queryClient}>
@@ -41,9 +39,6 @@ export default function RootLayout({
             </QueryClientProvider>
           </AppSessionProvider>
         </ThemeProvider>
-
-        {/* </AppProvider> */}
-
       </body>
     </html>
   );

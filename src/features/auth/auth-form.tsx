@@ -25,14 +25,14 @@ import { ROUTES } from "@/shared/constants/routes";
 export const AuthForm = () => {
   const { variant, toggleVariant } = useToggleAuthVariant();
   const { form, isFormLauding, onFormSubmit } = useAuthForm(variant);
-  const { isSocialLauding, socialAction } = useSocialAction()
+  const { isSocialLauding, socialAction } = useSocialAction();
   // const session = useSession()
-  const router = useRouter()
+  const router = useRouter();
 
   // useEffect(() => {
   //   if(session?.status === 'authenticated') {
   //     router.push(ROUTES.USERS)
-      
+
   //   }
   // }, [session?.status, router])
 
@@ -53,7 +53,7 @@ export const AuthForm = () => {
                     <Input
                       className="leading-6 text-gray-900 focus-visible:ring-sky-600"
                       disabled={isFormLauding || isSocialLauding}
-                      placeholder="І&apos;мя..."
+                      placeholder="І'мя..."
                       {...field}
                     />
                   </FormControl>
@@ -119,7 +119,10 @@ export const AuthForm = () => {
           size="fullWidth"
         >
           <PiSignInFill
-            className={cn("mr-2 h-4 w-4", isFormLauding || isSocialLauding && "animate-spin")}
+            className={cn(
+              "mr-2 h-4 w-4",
+              isFormLauding || (isSocialLauding && "animate-spin"),
+            )}
           />
           {variant === "LOGIN" ? "Увійти" : "Зареєструватись"}
         </Button>
@@ -136,10 +139,16 @@ export const AuthForm = () => {
           </div>
         </div>
         <div className="mt-6 flex gap-2">
-          <AuthSocialButton disabled={isFormLauding || isSocialLauding} onClick={() => socialAction("github")}>
+          <AuthSocialButton
+            disabled={isFormLauding || isSocialLauding}
+            onClick={() => socialAction("github")}
+          >
             <BsGithub />
           </AuthSocialButton>
-          <AuthSocialButton disabled={isFormLauding || isSocialLauding} onClick={() => socialAction("google")}>
+          <AuthSocialButton
+            disabled={isFormLauding || isSocialLauding}
+            onClick={() => socialAction("google")}
+          >
             <BsGoogle />
           </AuthSocialButton>
         </div>

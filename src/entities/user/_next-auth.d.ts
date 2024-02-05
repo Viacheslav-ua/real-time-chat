@@ -6,12 +6,12 @@ declare module "next-auth" {
     // user: SessionEntity["user"];
     user: {
       // id: string
-      name?: string
-      email: string
-      image?: string 
-    }
+      name?: string;
+      email: string;
+      image?: string;
+    };
   }
-//   // interface User extends UserEntity {}
+  //   // interface User extends UserEntity {}
   // interface User {
   //   id: string
   //   email: string
