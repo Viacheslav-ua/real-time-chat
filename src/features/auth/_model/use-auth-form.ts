@@ -23,7 +23,7 @@ const authFormSchema = z.object({
 });
 
 export const useAuthForm = (variant: AuthVariant) => {
-  const [isFormLauding, setIsFormLauding] = useState(false);
+  const [isFormLoading, setIsFormLoading] = useState(false);
   const router = useRouter();
 
   const form = useForm<z.infer<typeof authFormSchema>>({
@@ -36,13 +36,13 @@ export const useAuthForm = (variant: AuthVariant) => {
   });
 
   const onFormSubmit = (data: z.infer<typeof authFormSchema>) => {
-    setIsFormLauding(true);
+    setIsFormLoading(true);
     if (variant === "REGISTER") {
       axios
         .post(API_ROUTES.REGISTER, data)
         .then(() => signIn("credentials", data))
         .catch(() => toast.error("something went wrong"))
-        .finally(() => setIsFormLauding(false));
+        .finally(() => setIsFormLoading(false));
     }
     if (variant === "LOGIN") {
       signIn("credentials", {
@@ -58,13 +58,13 @@ export const useAuthForm = (variant: AuthVariant) => {
             toast.success("Увійшли в систему");
           }
         })
-        .finally(() => setIsFormLauding(false));
+        .finally(() => setIsFormLoading(false));
     }
   };
 
   return {
     form,
     onFormSubmit,
-    isFormLauding,
+    isFormLoading,
   };
 };
