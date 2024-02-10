@@ -11,11 +11,14 @@ export function Nav() {
   const [isOpen, setIsOpen] = useState(false)
 
   return (
-    <nav className="flex items-start md:items-center gap-6 text-sm font-medium flex-col md:flex-row ">
+    <nav className="flex items-start md:items-center gap-6 text-sm font-medium">
       <ul role="list" className="
           flex
-          items-center
-          space-x-10
+          flex-col
+
+          md:flex-row
+          
+          md:space-x-10
         ">
           {routes.map(item => (
             <NavItem 

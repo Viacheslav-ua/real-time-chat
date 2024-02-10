@@ -28,9 +28,14 @@ export function Layout({
                 <Menu className="h-5 w-5" />
               </Button>
             </SheetTrigger>
-            <SheetContent side="left">
+            <SheetContent side="left" className="flex flex-col justify-start">
               <SheetHeader className=" border-b pb-5 mb-5">{logo}</SheetHeader>
               {nav}
+              <div className="mt-10 pt-4 border-t flex justify-between ">
+                {profile}
+                {actions}
+              </div>
+              
             </SheetContent>
           </Sheet>
         </div>
@@ -38,7 +43,7 @@ export function Layout({
         <div className="mr-16 hidden md:flex">{logo}</div>
         <div className="items-center flex-1 flex">
           <div className="hidden md:flex">{nav}</div>
-          <div className="flex flex-1 items-center justify-end space-x-3 ">
+          <div className="flex flex-1 items-center justify-end space-x-8 ">
             {actions}
             {profile}
           </div>

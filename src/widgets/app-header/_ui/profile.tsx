@@ -30,7 +30,7 @@ export function Profile() {
       <DropdownMenuTrigger asChild>
         <Button
           variant="ghost"
-          className="p-px rounded-full self-center h-8 w-8"
+          className="p-px rounded-full h-8 w-8"
         >
           {/* <ProfileAvatar profile={user} className="w-8 h-8" /> */}
           <Avatar>
