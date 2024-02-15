@@ -15,6 +15,7 @@ import { useAppSession } from "@/entities/user/session";
 import { Skeleton } from "@/shared/ui/skeleton";
 import { Avatar, AvatarFallback, AvatarImage } from "@/shared/ui/avatar";
 import { signOut } from "next-auth/react";
+import { ProfileAvatar, getProfileDisplayName } from "@/entities/user/profile";
 
 export function Profile() {
   const session = useAppSession();
@@ -32,19 +33,19 @@ export function Profile() {
           variant="ghost"
           className="p-px rounded-full h-8 w-8"
         >
-          {/* <ProfileAvatar profile={user} className="w-8 h-8" /> */}
-          <Avatar>
+          <ProfileAvatar profile={user} className="w-8 h-8 md:w-10 md:h-10" />
+          {/* <Avatar>
             <AvatarImage src={user?.image} />
             <AvatarFallback>CN</AvatarFallback>
-          </Avatar>
+          </Avatar> */}
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-56 mr-2 ">
         <DropdownMenuLabel>
           <p>Мій профіль</p>
           <p className="text-xs text-muted-foreground overflow-hidden text-ellipsis">
-            {/* {user ? getProfileDisplayName(user) : undefined} */}
-            {user ? user.name : undefined}
+            {user ? getProfileDisplayName(user) : undefined}
+            {/* {user ? user.name : undefined} */}
           </p>
         </DropdownMenuLabel>
         <DropdownMenuGroup></DropdownMenuGroup>

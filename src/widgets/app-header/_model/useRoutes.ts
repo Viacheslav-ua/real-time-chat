@@ -3,6 +3,7 @@ import { useMemo } from "react";
 import { HiChat } from "react-icons/hi"
 import { HiArrowLeftOnRectangle, HiUsers } from "react-icons/hi2"
 import { useConversation } from "./useConversation";
+import { API_ROUTES } from "@/shared/constants/api-routes";
 
 export const useRoutes = () => {
   const pathname = usePathname()
@@ -11,15 +12,15 @@ export const useRoutes = () => {
   const routes = useMemo(() => [
     {
       label: 'Chat',
-      href: '/conversations',
+      href: API_ROUTES.CONVERSATIONS,
       icon: HiChat,
-      active: pathname === '/conversations' || !!conversationId,
+      active: pathname === API_ROUTES.CONVERSATIONS || !!conversationId,
     },
     {
       label: 'Users',
-      href: '/users',
+      href: API_ROUTES.USERS,
       icon: HiUsers,
-      active: pathname === '/users',
+      active: pathname === API_ROUTES.USERS,
     },
   ], [pathname, conversationId])
 

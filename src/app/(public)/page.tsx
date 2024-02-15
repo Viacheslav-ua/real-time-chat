@@ -6,7 +6,7 @@ export default function Home() {
     <div className="flex min-h-screen flex-col justify-center py-12 sm:px-6 lg:px-8 bg-slate-200 dark:bg-slate-900">
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
         <div className="flex items-center justify-center">
-          <span className="text-sky-500">Flow</span>
+          <span className="text-sky-500">Lite</span>
           <Image
             src={"/images/logo.png"}
             priority={false}

@@ -4,10 +4,10 @@ import Link from "next/link";
 export function Logo() {
   return (
     <Link className="flex items-center" href="/">
-      <span className="text-sky-500 text-sm font-semibold">Flow</span>
+      <span className="text-sky-500 text-sm font-semibold">Lite</span>
       <Image
         src={"/images/logo.png"}
-        priority={false}
+        priority={true}
         alt="Logo"
         height="36"
         width="36"

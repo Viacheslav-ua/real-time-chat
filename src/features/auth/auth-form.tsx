@@ -145,7 +145,7 @@ export const AuthForm = () => {
       </div>
       <div className="flex gap-2 justify-center text-sm mt-6 px-2 text-gray-500">
         <div>
-          {variant === "LOGIN" ? "Вперше на FlowChat?" : "Вже є аккаунт?"}
+          {variant === "LOGIN" ? "Вперше на LiteChat?" : "Вже є аккаунт?"}
         </div>
         <div
           className="underline cursor-pointer text-sky-600 hover:text-sky-700"
