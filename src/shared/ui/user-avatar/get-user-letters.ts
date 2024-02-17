@@ -1,8 +1,5 @@
-import { Profile } from "../_domain/types";
-import { getProfileDisplayName } from "./get-profile-display-name";
-
-export const getProfileLetters = (profile: Profile) => {
-  const displayName = getProfileDisplayName(profile);
+export const getUserLetters = (email: string, name: string | undefined | null) => {
+  const displayName = name ? name : email;
 
   const [a, b] = displayName.split("@")[0].split(/\.|\s|-|_/);
 

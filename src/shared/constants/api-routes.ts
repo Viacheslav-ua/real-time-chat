@@ -1,8 +1,8 @@
 export enum API_ROUTES {
   REGISTER = "/api/register",
   HOME = "/",
-  // SIGN_IN = "/auth/sign-in",
-  USERS = "/users",
-  CONVERSATIONS = "/conversations",
+  // USERS = "/users",
+  CONVERSATIONS = "api/conversations",
+  
 
 }
