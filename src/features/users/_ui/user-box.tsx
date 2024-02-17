@@ -2,6 +2,7 @@
 
 import { API_ROUTES } from "@/shared/constants/api-routes";
 import { ROUTES } from "@/shared/constants/routes";
+import { UserAvatar } from "@/shared/ui/user-avatar/user-avatar";
 import { User } from "@prisma/client";
 import axios from "axios";
 import { useRouter } from "next/navigation";
@@ -32,14 +33,18 @@ export const UserBox = ({ data }: { data: User }) => {
       flex
       items-center
       space-x-3
-      bg-white
+     
       p-3
-      hover:bg-neutral-100
-      dark:bg-neutral-800
+      hover:bg-neutral-200
+     
       dark:hover:bg-neutral-700
       rounded-lg
       transition
     ">
+     <UserAvatar image={data.image} name={data.name} email={data.email} />
+     <div className="ml-4 text-sm">
+      {data.name ? data.name : data.email}
+     </div>
       
     </div>
   )

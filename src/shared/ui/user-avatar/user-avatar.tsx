@@ -5,7 +5,7 @@ import { getUserLetters } from "./get-user-letters";
 interface UserAvatarProps {
   image?: string | null;
   name?: string | null;
-  email: string;
+  email: string | null;
   className?: string;
 }
 export const UserAvatar: React.FC<UserAvatarProps> = ({
