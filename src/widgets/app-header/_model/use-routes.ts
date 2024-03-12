@@ -2,7 +2,7 @@ import { usePathname } from "next/navigation";
 import { useMemo } from "react";
 import { HiChat } from "react-icons/hi"
 import { HiArrowLeftOnRectangle, HiUsers } from "react-icons/hi2"
-import { useConversation } from "./useConversation";
+import { useConversation } from "@/shared/libs/use-conversation";
 import { ROUTES } from "@/shared/constants/routes";
 
 export const useRoutes = () => {

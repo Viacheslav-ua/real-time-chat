@@ -42,8 +42,11 @@ export const UserBox = ({ data }: { data: User }) => {
       transition
     ">
      <UserAvatar image={data.image} name={data.name} email={data.email} />
-     <div className="ml-4 text-sm">
-      {data.name ? data.name : data.email}
+     <div className="flex justify-between items-center mb-1">
+      <p className="text-sm font-medium text-gray-900 dark:text-gray-200">
+        {data.name || data.email}
+      </p>
+      
      </div>
       
     </div>

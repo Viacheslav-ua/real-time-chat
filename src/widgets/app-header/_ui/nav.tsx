@@ -2,7 +2,7 @@ import clsx from "clsx";
 "use client"
 
 import { useState } from "react"
-import { useRoutes } from "../_model/useRoutes"
+import { useRoutes } from "../_model/use-routes"
 import { NavItem } from "./nav-item"
 
 export function Nav() {
@@ -15,9 +15,7 @@ export function Nav() {
       <ul role="list" className="
           flex
           flex-col
-
           md:flex-row
-          
           md:space-x-10
         ">
           {routes.map(item => (
@@ -30,12 +28,6 @@ export function Nav() {
             />
           ))}
         </ul>
-      {/* <Link
-        className="transition-colors hover:text-foreground/80 text-foreground/60"
-        href="/learn"
-      >
-        Навчання
-      </Link> */}
     </nav>
   );
 }
