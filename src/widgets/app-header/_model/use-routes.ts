@@ -11,13 +11,13 @@ export const useRoutes = () => {
 
   const routes = useMemo(() => [
     {
-      label: 'Chat',
+      label: 'Чати',
       href: ROUTES.CONVERSATIONS,
       icon: HiChat,
       active: pathname === ROUTES.CONVERSATIONS || !!conversationId,
     },
     {
-      label: 'Users',
+      label: 'Абоненти',
       href: ROUTES.USERS,
       icon: HiUsers,
       active: pathname === ROUTES.USERS,
