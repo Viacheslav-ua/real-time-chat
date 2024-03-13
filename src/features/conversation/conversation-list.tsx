@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import { useConversation } from "@/shared/libs/use-conversation";
 import clsx from "clsx";
 import { MdOutlineGroupAdd } from "react-icons/md";
+import { ConversationBox } from "./_ui/conversation-box";
 
 interface ConversationListProps {
   initialItems: FullConversationType[];
@@ -36,8 +37,8 @@ export const ConversationList: React.FC<ConversationListProps> = ({
         isOpen ? "hidden" : "block w-full left-0"
       )}>
 
-      <div className="px-5">
-        <div className="flex justify-between items-center py-6">
+      <div className="px-4">
+        <div className="flex justify-between items-center py-4">
           <div className="text-2xl font-bold text-neutral-800 dark:text-neutral-300">
             Чати
           </div>
@@ -45,6 +46,15 @@ export const ConversationList: React.FC<ConversationListProps> = ({
           cursor-pointer hover:opacity-75 transition dark:text-neutral-300">
             <MdOutlineGroupAdd size={24} />
           </div>
+        </div>
+        <div>
+          {items.map((item) => (
+            <ConversationBox
+              key={item.id}
+              data={item}
+              selected={conversationId === item.id}
+            />
+          ))}
         </div>
       </div>
       
