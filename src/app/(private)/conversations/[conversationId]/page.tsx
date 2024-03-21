@@ -3,6 +3,7 @@ import { getMessages } from "@/entities/actions/get-messages.server";
 import { EmptyState } from "@/shared/ui/empty-state";
 import { Header } from "./_ui/header";
 import { Body } from "./_ui/body";
+import { Form } from "./_ui/form";
 
 interface IParams {
   'conversationId': string;
@@ -27,6 +28,7 @@ if(!conversation) {
       <div className="h-full flex flex-col">
         <Header conversation={conversation} />
         <Body />
+        <Form />
       </div>
     </div>
   )

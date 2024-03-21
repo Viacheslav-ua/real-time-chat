@@ -3,6 +3,7 @@ export enum API_ROUTES {
   HOME = "/",
   // USERS = "/users",
   CONVERSATIONS = "api/conversations",
+  MESSAGES = "api/messages",
   
 
 }
