@@ -1,9 +1,7 @@
 import { getConversationById } from "@/entities/actions/get-conversation-by-id.server";
 import { getMessages } from "@/entities/actions/get-messages.server";
 import { EmptyState } from "@/shared/ui/empty-state";
-import { Header } from "./_ui/header";
-import { Body } from "./_ui/body";
-import { Form } from "./_ui/form";
+import { ConversationItem } from "@/features/conversation-item/conversation-item";
 
 interface IParams {
   'conversationId': string;
@@ -25,11 +23,7 @@ if(!conversation) {
 
   return (
     <div className="lg:pl-80 h-full">
-      <div className="h-full flex flex-col">
-        <Header conversation={conversation} />
-        <Body />
-        <Form />
-      </div>
+      <ConversationItem conversation={conversation} messages={messages} />
     </div>
   )
 }
