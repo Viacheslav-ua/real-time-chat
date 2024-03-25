@@ -7,9 +7,11 @@ export default async function PrivateLayout({
   children: React.ReactNode;
 }) {
   return (
-    <>
+    <div className="h-screen flex flex-col">
       <AppHeader variant="private" />
-      <AuthorizedGuard>{children}</AuthorizedGuard>
-    </>
+      <div className="flex-1">
+        <AuthorizedGuard>{children}</AuthorizedGuard>
+      </div>
+    </div>
   );
 }

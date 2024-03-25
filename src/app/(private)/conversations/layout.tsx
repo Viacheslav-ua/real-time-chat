@@ -9,7 +9,7 @@ export default async function ConversationLayout({
   const conversation = await getConversations();
 
   return (
-  <div>
+  <div className="h-full">
     <ConversationList initialItems={conversation}/>
     {children}
   </div>

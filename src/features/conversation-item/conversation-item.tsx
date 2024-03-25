@@ -10,7 +10,7 @@ export const ConversationItem = async ({ conversation, messages }: {
 }) => {
  
   return (
-    <div className="h-full flex flex-col">
+    <div className="h-full flex flex-col justify-between">
       <Header conversation={conversation} />
       <Body />
       <Form />
