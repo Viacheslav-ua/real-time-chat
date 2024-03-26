@@ -6,11 +6,10 @@ import axios from "axios";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import { HiPhoto, HiPaperAirplane } from "react-icons/hi2";
 import { MessageInput } from "./message-input";
-// import { HiPaperAirplane } from "react-icons/hi";
 
 export const Form = () => {
 
-  const conversationId = useConversation();
+  const  { conversationId } = useConversation();
   const {register, handleSubmit, setValue, formState: {errors}} = useForm<FieldValues>({
     defaultValues: {
       message: ''
@@ -21,12 +20,12 @@ export const Form = () => {
     setValue('message', '', {shouldValidate: true});
     axios.post(API_ROUTES.MESSAGES, {
       ...data,
-      conversationId: conversationId,
+      conversationId,
     })
   }
 
   return (
-    <div className="py-4 px-4 bg-white border-t flex items-center gap-2 lg:gap-4 w-full">
+    <div className="py-4 px-4 border-t flex items-center gap-2 lg:gap-4 w-full">
       <HiPhoto size={30} className="text-sky-500"/>
       <form 
         onSubmit={handleSubmit(onSubmit)}

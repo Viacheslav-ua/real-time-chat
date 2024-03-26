@@ -29,7 +29,7 @@ export const UserList: React.FC<UserListProps> = ({ items }) => {
       <div className="px-5">
         <div className="flex-col">
           <div className="text-2xl font-bold text-neutral-800 dark:text-neutral-300 py-4">
-            Користувачі
+            Абоненти
           </div>
         </div>
         {items.map((item) => (

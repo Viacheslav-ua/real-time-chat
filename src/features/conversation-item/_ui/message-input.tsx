@@ -21,13 +21,13 @@ export const MessageInput: React.FC<MessageInputProps> = ({
   return (
     <div className="relative w-full">
       <input
-      id={id} 
-      type={type}
-      autoComplete={id}
-      {...register(id, {required})}
-      placeholder={placeholder}
-      className="font-light py-2 px-4 bg-neutral-100 w-full rounded-full focus:outline-none"
-       
+        id={id}
+        type={type}
+        autoComplete={id}
+        {...register(id, { required })}
+        placeholder={placeholder}
+        className="font-light py-2 px-4 bg-neutral-200 dark:bg-neutral-700
+       w-full rounded-full focus:outline-none"
       />
     </div>
   )

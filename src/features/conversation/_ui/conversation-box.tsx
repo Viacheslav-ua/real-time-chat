@@ -11,6 +11,7 @@ import { FullConversationType } from "../types";
 import { useOtherUser } from "../_model/use-other-user";
 import { ROUTES } from "@/shared/constants/routes";
 import { UserAvatar } from "@/shared/ui/user-avatar/user-avatar";
+import { GiConversation } from "react-icons/gi";
 
 
 interface ConversationBoxProps {
@@ -49,7 +50,7 @@ export const ConversationBox: React.FC<ConversationBoxProps> = ({ data, selected
 
   const lastMessageText = useMemo(() => {
     if(!lastMessage?.image) {
-      return 'Надіслано зображення';
+      return 'Надіслана пропозиція';
     }
 
     if(lastMessage?.body) {
@@ -65,10 +66,12 @@ export const ConversationBox: React.FC<ConversationBoxProps> = ({ data, selected
 
   return (
     <div onClick={handleClick} 
-      className={cn(`w-full relative cursor-pointer 
+      className={cn(`w-full relative cursor-pointer mt-1 
         flex items-center space-x-3 p-3 hover:bg-neutral-200 dark:hover:bg-neutral-700 
         rounded-lg transition`,
-        selected ? 'bg-neutral-100 dark:bg-neutral-600' : '')}
+        selected 
+        ? 'bg-sky-200 dark:bg-sky-700 hover:bg-sky-200 dark:hover:bg-sky-700 cursor-default'  
+        : '')}
     >
       <UserAvatar image={otherUser.image} name={otherUser.name} email={otherUser.email} />
       <div>
@@ -91,6 +94,10 @@ export const ConversationBox: React.FC<ConversationBoxProps> = ({ data, selected
           {lastMessageText}
         </p>
       </div>
+
+      {selected && (
+        <GiConversation size={24} className="text-green-600 dark:text-green-400 ml-6" />
+      )}
     </div>
   )
 }

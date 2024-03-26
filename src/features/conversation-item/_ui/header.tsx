@@ -17,10 +17,14 @@ export const Header: React.FC<HeaderProps> = ({ conversation }) => {
   const otherUser = useOtherUser(conversation);
   const statusText = useMemo(() => {
     if(conversation.isGroup) {
-      return `${conversation.users.length} members`;
+      let members = 'абонентів';
+      if(conversation.users.length > 2 && conversation.users.length <= 4) {
+        members = 'абоненти';
+      }
+      return `${conversation.users.length} ${members}`;
     }
 
-    return 'Active';
+    return 'Активний';
   }, [conversation]);
     
   return (
@@ -37,7 +41,7 @@ export const Header: React.FC<HeaderProps> = ({ conversation }) => {
           <div>
             {conversation.name || otherUser?.name}
           </div>
-          <div className="text-sm font-light opacity-60">
+          <div className="text-sm font-light text-green-700 dark:text-green-400 opacity-80">
             {statusText}
           </div>
         </div>
